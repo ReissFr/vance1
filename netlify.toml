@@ -1,12 +1,13 @@
 [build]
   base = "apps/web"
   command = "cd ../.. && pnpm install --frozen-lockfile && pnpm --filter web build"
-  publish = "apps/web/.next"
+  publish = ".next"
 
 [build.environment]
   NODE_VERSION = "20"
   PNPM_VERSION = "9.15.0"
   NPM_FLAGS = "--version"
+  NODE_OPTIONS = "--max-old-space-size=8192"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
