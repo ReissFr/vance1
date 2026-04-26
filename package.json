@@ -1,0 +1,19 @@
+{
+  "name": "jarvis",
+  "version": "0.0.1",
+  "private": true,
+  "description": "JARVIS — personal AI assistant (codename)",
+  "packageManager": "pnpm@9.15.0",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "pnpm --filter web dev",
+    "build": "pnpm -r build",
+    "typecheck": "pnpm -r typecheck",
+    "lint": "pnpm -r lint"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.3"
+  }
+}

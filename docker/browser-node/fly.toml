@@ -1,0 +1,43 @@
+# Fly.io manifest for the JARVIS browser node. Single-tenant shared
+# scaffold — when Step 4 lands, we move to one machine per user via the
+# Fly Machines API (not this static fly.toml) so each JARVIS user gets their
+# own persistent profile volume.
+
+app = "jarvis-browser"
+primary_region = "lhr"
+
+[build]
+dockerfile = "Dockerfile"
+
+[env]
+PORT = "9222"
+PROFILE_DIR = "/data/profile"
+
+# Persistent Chromium profile survives deploys/restarts. 1GB is plenty for
+# cookies + localStorage; the binary itself is inside the image, not here.
+[mounts]
+source = "jarvis_browser_data"
+destination = "/data"
+
+# CDP is a plain TCP websocket on port 9222. Expose it over TLS by letting
+# Fly terminate TLS on 443 and forward to 9222 inside the machine.
+[[services]]
+internal_port = 9222
+protocol = "tcp"
+auto_stop_machines = "stop"
+auto_start_machines = true
+min_machines_running = 0
+
+  [[services.ports]]
+  port = 443
+  handlers = ["tls"]
+
+  [[services.ports]]
+  port = 9222
+
+# One shared browser machine is enough for this scaffold — Step 4 replaces
+# this whole strategy with per-user machines.
+[[vm]]
+memory = "2gb"
+cpu_kind = "shared"
+cpus = 2

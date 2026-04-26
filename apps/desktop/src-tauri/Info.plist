@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>NSMicrophoneUsageDescription</key>
+    <string>JARVIS listens for the wake word and your spoken commands.</string>
+    <key>NSSpeechRecognitionUsageDescription</key>
+    <string>JARVIS uses speech recognition to understand what you say.</string>
+    <key>NSCameraUsageDescription</key>
+    <string>JARVIS uses the camera for face-aware presence (optional, off by default).</string>
+</dict>
+</plist>

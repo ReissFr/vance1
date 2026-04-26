@@ -1,0 +1,39 @@
+# deps
+node_modules/
+.pnpm-store/
+
+# build
+dist/
+.next/
+.turbo/
+*.tsbuildinfo
+
+# env — never commit real keys
+.env
+.env.local
+.env.*.local
+
+# editor / os
+.DS_Store
+.vscode/
+.idea/
+
+# logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# supabase
+supabase/.branches
+supabase/.temp
+
+# rust / tauri build output (multi-GB)
+target/
+
+# xcode user state
+*.xcuserstate
+xcuserdata/
+
+# misc local
+*.swp
+*.swo

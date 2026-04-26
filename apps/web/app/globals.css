@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap');
+
+:root {
+  color-scheme: dark;
+
+  --bg: #000000;
+  --surface: #0a0a0a;
+  --surface-2: #111111;
+
+  --ink: #F4F4F5;
+  --ink-2: #D6D6D6;
+  --ink-3: #71717A;
+  --ink-4: #474747;
+
+  --rule: rgba(255, 255, 255, 0.08);
+  --rule-soft: rgba(255, 255, 255, 0.04);
+
+  --indigo: #6366F1;
+  --indigo-soft: rgba(99, 102, 241, 0.18);
+  --violet: #8F91F5;
+  --violet-soft: rgba(143, 145, 245, 0.14);
+  --magenta: #C968F7;
+  --magenta-soft: rgba(201, 104, 247, 0.14);
+
+  --serif: "Instrument Serif", Georgia, serif;
+  --sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html, body {
+  background: var(--bg);
+  color: var(--ink);
+  min-height: 100%;
+  font-family: var(--sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--indigo-soft);
+  color: var(--ink);
+}
+
+/* Orb + ambient animations */
+@keyframes jv-spin { to { transform: rotate(360deg); } }
+@keyframes jv-spin-rev { to { transform: rotate(-360deg); } }
+@keyframes jv-breathe {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.028); }
+}
+@keyframes jv-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+@keyframes jv-ripple {
+  0% { transform: scale(0.9); opacity: 0.7; }
+  100% { transform: scale(1.18); opacity: 0; }
+}
+@keyframes jv-wave {
+  0% { transform: scale(1); opacity: 0.55; }
+  100% { transform: scale(1.5); opacity: 0; }
+}
+@keyframes jv-breathe-ring {
+  0%, 100% { transform: scale(1); opacity: 0.55; }
+  50% { transform: scale(1.08); opacity: 0.35; }
+}
+@keyframes jv-toast-in {
+  0% { transform: translateX(8px); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+
+/* Sparse utility classes — keep Tailwind primary */
+.font-serif-italic { font-family: var(--serif); font-style: italic; font-weight: 400; }
+.font-mono-label { font-family: var(--mono); letter-spacing: 0.14em; text-transform: uppercase; }
+
+/* Scrollbars — quiet */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.16); }
+
+/* Mobile — kill horizontal scroll from fixed-width child boxes. */
+@media (max-width: 640px) {
+  html, body { overflow-x: hidden; }
+}
