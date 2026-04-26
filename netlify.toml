@@ -8,6 +8,7 @@
   PNPM_VERSION = "9.15.0"
   NPM_FLAGS = "--version"
   NODE_OPTIONS = "--max-old-space-size=8192"
+  SECRETS_SCAN_OMIT_PATHS = ".next/**,.netlify/**,node_modules/**"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
